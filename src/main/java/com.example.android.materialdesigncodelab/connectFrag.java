@@ -3,6 +3,7 @@ package com.example.android.materialdesigncodelab;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -20,19 +21,31 @@ import android.widget.Toast;
 public class connectFrag extends Fragment {
 
     private BluetoothAdapter bluetoothAdapter = null;
-    public static final int REQUEST_CONNECT = 1;
+    public static final int REQUEST_CONNECT = 2;
     public static final int START_CONVERSATION = 1;
+
+//    private ChatService chatService = null;
+
+    private String address = null;
+
+    sendAddress activityCommander;
+
+//    @Override
+//    public void onAttach(Activity activity) {
+//        super.onAttach(activity);
+//        try{
+//            activityCommander = (sendAddress) activity;
+//        }catch (ClassCastException e){
+//            throw new ClassCastException(activity.toString());
+//        }
+//    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-//        RecyclerView recyclerView = (RecyclerView) inflater.inflate(
-//                R.layout.recycler_view, container, false);
-//        ContentAdapter adapter = new ContentAdapter();
-//        recyclerView.setAdapter(adapter);
-//        recyclerView.setHasFixedSize(true);
+
 //
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-//        return recyclerView;
         View view = inflater.inflate(R.layout.connect_layout, container, false);
 
         final Button ScanButton = (Button) view.findViewById(R.id.ScanButton);
@@ -44,7 +57,7 @@ public class connectFrag extends Fragment {
 //                        Toast.makeText(getActivity(), "scanButton Clicked!",
 //                                Toast.LENGTH_LONG).show();
                         Intent serverIntent = null;
-                        serverIntent = new Intent(getActivity(), DeviceListActivity.class);
+                        serverIntent = new Intent(getActivity(), DeviceScanActivity.class);
                         startActivityForResult(serverIntent, REQUEST_CONNECT);
                     }
                 }
@@ -71,6 +84,14 @@ public class connectFrag extends Fragment {
         return view;
     }
 
+    public interface sendAddress{
+        public void sendAddresstoFrag(String address);
+    }
+
+    public void startChat(String address){
+        Toast.makeText(getActivity(), address, Toast.LENGTH_LONG).show();
+        activityCommander.sendAddresstoFrag(address);
+        }
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
 //            case REQUEST_CONNECT_DEVICE_SECURE:
@@ -80,7 +101,11 @@ public class connectFrag extends Fragment {
 //                break;
             case REQUEST_CONNECT:
                 if (resultCode == Activity.RESULT_OK) {
-                    connectDevice(data, false);
+                    address = data.getExtras().getString(
+                            DeviceScanActivity.DEVICE_ADDRESS);
+//                    startChat(address);
+                    ((MainActivity)getActivity()).selectFragment(0);
+//                    connectDevice(data, false);
                 }
                 break;
 //            case REQUEST_ENABLE_BT:
@@ -94,40 +119,7 @@ public class connectFrag extends Fragment {
         }
     }
 
-    private void connectDevice(Intent data, boolean secure) {
-        String address = data.getExtras().getString(
-                DeviceListActivity.DEVICE_ADDRESS);
-        BluetoothDevice device = bluetoothAdapter.getRemoteDevice(address);
-//        chatService.connect(device, secure);
-    }
-
-
-//    public static class ViewHolder extends RecyclerView.ViewHolder {
-//        public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
-//            super(inflater.inflate(R.layout.connect_layout, parent, false));
-//        }
-//    }
-//
-//    public static class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
-//        // Set numbers of List in RecyclerView.
-//        private static final int LENGTH = 18;
-//
-//        public ContentAdapter() {
-//        }
-//
-//        @Override
-//        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-//            return new ViewHolder(LayoutInflater.from(parent.getContext()), parent);
-//        }
-//
-//        @Override
-//        public void onBindViewHolder(ViewHolder holder, int position) {
-//            // no-op
-//        }
-//
-//        @Override
-//        public int getItemCount() {
-//            return LENGTH;
-//        }
+//    public void print(String address){
+//        Toast.makeText(getActivity(), address, Toast.LENGTH_LONG).show();
 //    }
 }

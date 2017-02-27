@@ -43,7 +43,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements connectFrag.sendAddress{
 
 
 
@@ -71,6 +71,12 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int REQUEST_ENABLE_BT = 3;
 
+    @Override
+    public void sendAddresstoFrag(String address) {
+//        Toast.makeText(this, address, Toast.LENGTH_LONG).show();
+        convoFrag convo = (convoFrag) getSupportFragmentManager().findFragmentById(0);
+        convo.deviceAddress(address);
+    }
 
 //    private ChatService chatService = null;
 
@@ -103,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        ensureDiscoverable();
+//        ensureDiscoverable();
     }
 
     public void selectFragment(int position){

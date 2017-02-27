@@ -20,8 +20,8 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="15"
-        android:targetSdkVersion="23" />
+        android:minSdkVersion="11"
+        android:targetSdkVersion="25" />
     android:versionCode="1"
     android:versionName="1.0" >
     <uses-permission android:name="android.permission.BLUETOOTH" />
@@ -44,10 +44,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.android.materialdesigncodelab.DeviceListActivity"
+            android:name="com.example.android.materialdesigncodelab.DeviceScanActivity"
             android:label="@string/select_device"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Dialog" />
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>
