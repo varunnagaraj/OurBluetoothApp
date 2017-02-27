@@ -1,0 +1,7 @@
+#Sun Feb 26 17:11:27 PST 2017
+base.0=C\:\\Users\\Varun Nagaraj\\AndroidStudioProjects\\android-design-library-master\\1-Base\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_3fa00b5246999398e0bd02a3d30582efb031a54a
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=C\:\\Users\\Varun Nagaraj\\AndroidStudioProjects\\android-design-library-master\\1-Base\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_0e07cc99b52685c8a190c306bacb67324e60699e\\classes.dex
+base.1=C\:\\Users\\Varun Nagaraj\\AndroidStudioProjects\\android-design-library-master\\1-Base\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_0e07cc99b52685c8a190c306bacb67324e60699e
+file.0=C\:\\Users\\Varun Nagaraj\\AndroidStudioProjects\\android-design-library-master\\1-Base\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_3fa00b5246999398e0bd02a3d30582efb031a54a\\classes.dex
