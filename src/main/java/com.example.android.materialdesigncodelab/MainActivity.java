@@ -30,6 +30,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.support.design.widget.TabLayout;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
 //    private ChatService chatService = null;
 
-
+    ViewPager viewPager = null;
 
     private BluetoothAdapter bluetoothAdapter = null;
 
@@ -84,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // Setting ViewPager for each Tab
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
         // Set Tabs inside Toolbar
         TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
@@ -92,7 +93,8 @@ public class MainActivity extends AppCompatActivity {
 
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
-
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         if (bluetoothAdapter == null) {
             Toast.makeText(this, "Bluetooth is not available",
@@ -104,10 +106,13 @@ public class MainActivity extends AppCompatActivity {
         ensureDiscoverable();
     }
 
+    public void selectFragment(int position){
+        viewPager.setCurrentItem(position, true);
+    }
     // Add Fragments to Tabs
     private void setupViewPager(ViewPager viewPager) {
         Adapter adapter = new Adapter(getSupportFragmentManager());
-        adapter.addFragment(new convoFrag(), "Conversation ");
+        adapter.addFragment(new convoFrag(), "Conversation");
         adapter.addFragment(new connectFrag(), "Connect");
 //        adapter.addFragment(new CardContentFragment(), "Card");
         viewPager.setAdapter(adapter);

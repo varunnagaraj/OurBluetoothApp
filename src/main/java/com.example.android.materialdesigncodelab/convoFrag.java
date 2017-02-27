@@ -115,19 +115,20 @@ public class convoFrag extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        RecyclerView recyclerView = (RecyclerView) inflater.inflate(
-                R.layout.recycler_view, container, false);
-        ContentAdapter adapter = new ContentAdapter();
-        recyclerView.setAdapter(adapter);
-        recyclerView.setHasFixedSize(true);
-//        View view = inflater.inflate(R.layout.convo_layout, container, false);
+//        RecyclerView recyclerView = (RecyclerView) inflater.inflate(
+//                R.layout.recycler_view, container, false);
+//        ContentAdapter adapter = new ContentAdapter();
+//        recyclerView.setAdapter(adapter);
+//        recyclerView.setHasFixedSize(true);
+        View view = inflater.inflate(R.layout.convo_layout, container, false);
 //        lvMainChat = (ListView) getView().findViewById(R.id.lvMainChat);
 //        etMain = (EditText) getView().findViewById(R.id.etMain);
 //        btnSend = (Button) getView().findViewById(R.id.btnSend);
+
        // bindEventHandler();
 
-        return recyclerView;
-//        return view;
+//        return recyclerView;
+        return view;
     }
 
 //    private void bindEventHandler() {
@@ -169,34 +170,34 @@ public class convoFrag extends Fragment{
 //        }
 //    }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
-            super(inflater.inflate(R.layout.convo_layout, parent, false));
-        }
-    }
-
-    public static class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
-        // Set numbers of List in RecyclerView.
-        private static final int LENGTH = 18;
-
-        public ContentAdapter() {
-        }
-
-        @Override
-        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            return new ViewHolder(LayoutInflater.from(parent.getContext()), parent);
-        }
-
-        @Override
-        public void onBindViewHolder(ViewHolder holder, int position) {
-            // no-op
-        }
-
-        @Override
-        public int getItemCount() {
-            return LENGTH;
-        }
-    }
+//    public static class ViewHolder extends RecyclerView.ViewHolder {
+//        public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
+//            super(inflater.inflate(R.layout.convo_layout, parent, false));
+//        }
+//    }
+//
+//    public static class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
+//        // Set numbers of List in RecyclerView.
+//        private static final int LENGTH = 18;
+//
+//        public ContentAdapter() {
+//        }
+//
+//        @Override
+//        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+//            return new ViewHolder(LayoutInflater.from(parent.getContext()), parent);
+//        }
+//
+//        @Override
+//        public void onBindViewHolder(ViewHolder holder, int position) {
+//            // no-op
+//        }
+//
+//        @Override
+//        public int getItemCount() {
+//            return LENGTH;
+//        }
+//    }
 
 //    @Override
 //    public synchronized void onResume() {
