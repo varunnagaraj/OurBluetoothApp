@@ -1,4 +1,4 @@
-#Sun Feb 26 20:07:16 PST 2017
+#Sun Feb 26 22:14:00 PST 2017
 base.0=C\:\\Users\\Varun Nagaraj\\AndroidStudioProjects\\android-design-library-master\\1-Base\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_3fa00b5246999398e0bd02a3d30582efb031a54a
 renamed.1=classes.dex
 renamed.0=classes2.dex

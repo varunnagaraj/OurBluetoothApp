@@ -4,6 +4,7 @@ package com.example.android.materialdesigncodelab;
  * Created by Varun Nagaraj on 26-02-2017.
  */
 import java.util.Set;
+import java.util.jar.Manifest;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
@@ -13,6 +14,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -35,17 +37,18 @@ public class DeviceListActivity extends Activity {
 
     public static String DEVICE_ADDRESS = "deviceAddress";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.device_list);
 
-//        setResult(Activity.RESULT_CANCELED);
+        setResult(Activity.RESULT_CANCELED);
 
-//        getWidgetReferences();
-//        bindEventHandler();
-//        initializeValues();
+        getWidgetReferences();
+        bindEventHandler();
+        initializeValues();
     }
 
     private void getWidgetReferences() {
@@ -140,8 +143,7 @@ public class DeviceListActivity extends Activity {
             String action = intent.getAction();
 
             if (BluetoothDevice.ACTION_FOUND.equals(action)) {
-                BluetoothDevice device = intent
-                        .getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+                BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
                 if (device.getBondState() != BluetoothDevice.BOND_BONDED) {
                     newDevicesArrayAdapter.add(device.getName() + "\n"
                             + device.getAddress());

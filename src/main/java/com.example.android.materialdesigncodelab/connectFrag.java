@@ -1,6 +1,8 @@
 package com.example.android.materialdesigncodelab;
 
+import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -39,8 +41,8 @@ public class connectFrag extends Fragment {
         ScanButton.setOnClickListener(
                 new View.OnClickListener(){
                     public void onClick(View view){
-                        Toast.makeText(getActivity(), "scanButton Clicked!",
-                                Toast.LENGTH_LONG).show();
+//                        Toast.makeText(getActivity(), "scanButton Clicked!",
+//                                Toast.LENGTH_LONG).show();
                         Intent serverIntent = null;
                         serverIntent = new Intent(getActivity(), DeviceListActivity.class);
                         startActivityForResult(serverIntent, REQUEST_CONNECT);
@@ -69,39 +71,63 @@ public class connectFrag extends Fragment {
         return view;
     }
 
-//    public void scanButtonClicked(View view) {
-//        Toast.makeText(getActivity(), "scanButton Clicked!",
-//                Toast.LENGTH_LONG).show();
-//        Intent serverIntent = null;
-//        serverIntent = new Intent(getActivity(), DeviceListActivity.class);
-//        startActivityForResult(serverIntent, REQUEST_CONNECT);
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+//            case REQUEST_CONNECT_DEVICE_SECURE:
+//                if (resultCode == Activity.RESULT_OK) {
+//                    connectDevice(data, true);
+//                }
+//                break;
+            case REQUEST_CONNECT:
+                if (resultCode == Activity.RESULT_OK) {
+                    connectDevice(data, false);
+                }
+                break;
+//            case REQUEST_ENABLE_BT:
+//                if (resultCode == Activity.RESULT_OK) {
+//                    setupChat();
+//                } else {
+//                    Toast.makeText(this, R.string.bt_not_enabled_leaving,
+//                            Toast.LENGTH_SHORT).show();
+//                    finish();
+//                }
+        }
+    }
+
+    private void connectDevice(Intent data, boolean secure) {
+        String address = data.getExtras().getString(
+                DeviceListActivity.DEVICE_ADDRESS);
+        BluetoothDevice device = bluetoothAdapter.getRemoteDevice(address);
+//        chatService.connect(device, secure);
+    }
+
+
+//    public static class ViewHolder extends RecyclerView.ViewHolder {
+//        public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
+//            super(inflater.inflate(R.layout.connect_layout, parent, false));
+//        }
 //    }
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
-            super(inflater.inflate(R.layout.connect_layout, parent, false));
-        }
-    }
-
-    public static class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
-        // Set numbers of List in RecyclerView.
-        private static final int LENGTH = 18;
-
-        public ContentAdapter() {
-        }
-
-        @Override
-        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            return new ViewHolder(LayoutInflater.from(parent.getContext()), parent);
-        }
-
-        @Override
-        public void onBindViewHolder(ViewHolder holder, int position) {
-            // no-op
-        }
-
-        @Override
-        public int getItemCount() {
-            return LENGTH;
-        }
-    }
+//
+//    public static class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
+//        // Set numbers of List in RecyclerView.
+//        private static final int LENGTH = 18;
+//
+//        public ContentAdapter() {
+//        }
+//
+//        @Override
+//        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+//            return new ViewHolder(LayoutInflater.from(parent.getContext()), parent);
+//        }
+//
+//        @Override
+//        public void onBindViewHolder(ViewHolder holder, int position) {
+//            // no-op
+//        }
+//
+//        @Override
+//        public int getItemCount() {
+//            return LENGTH;
+//        }
+//    }
 }

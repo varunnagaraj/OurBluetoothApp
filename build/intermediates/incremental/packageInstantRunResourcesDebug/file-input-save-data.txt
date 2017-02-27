@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sun Feb 26 20:06:40 PST 2017
+#Sun Feb 26 22:13:24 PST 2017
 210.set=ANDROID_RESOURCE
 14.set=ANDROID_RESOURCE
 180.file=C\:\\Users\\Varun Nagaraj\\AndroidStudioProjects\\android-design-library-master\\1-Base\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\abc_screen_simple.xml
